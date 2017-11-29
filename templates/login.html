@@ -1,42 +1,7 @@
+{% include "style.html" %}
+
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <title>TestBed</title>
-
-  {% block styles %}
-  <!-- Bootstrap core CSS-->
-  <link href="{{ url_for('static', filename='../static/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <!-- Custom fonts for this template-->
-  <link href="{{ url_for('static', filename='../static/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
-  <!-- Page level plugin CSS-->
-  <link href="{{ url_for('static', filename='../static/vendor/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
-  <!-- Custom styles for this template-->
-  <link href="{{ url_for('static', filename='../static/css/sb-admin.css') }}" rel="stylesheet">
-  {% endblock %}
-
-  {% block scripts %}
-  <!-- jQuery -->
-  <script src="{{ url_for('static', filename='../static/vendor/jquery/jquery.min.js') }}"></script>
-
-  <!-- Bootstrap Core JavaScript -->
-  <script src="{{ url_for('static', filename='../static/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-
-  <!-- Metis Menu Plugin JavaScript -->
-  <script src="{{ url_for('static', filename='../static/vendor/metisMenu/metisMenu.min.js') }}"></script>
-
-  <!-- Custom Theme JavaScript -->
-  <script src="{{ url_for('static', filename='../static/dist/js/sb-admin-2.js') }}"></script>
-
-  {% endblock %}
-
-</head>
-
 {% block content %}
 <body>
 

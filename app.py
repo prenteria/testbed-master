@@ -10,7 +10,7 @@ Bootstrap(app)
 
 @app.route("/")
 def index():
-	return render_template('login.html')
+	return render_template('register.html')
 
 @app.route('/home')
 def home():
@@ -41,6 +41,11 @@ def statistics():
 def userprofiles():
     return render_template('userprofiles.html')
 
+@app.route('/register')
+def register():
+    return render_template('register.html')
+
+
 # Sessions allows you to store information specific to a user from one request to the next
 # To use a session you need a secret key
 
@@ -56,7 +61,7 @@ def login():
 def message():
     if not 'email' in session:
         return abort(403)
-    return render_template('message.html', email=session['email'], 
+    return render_template('/unused/message.html', email=session['email'], 
                                            password=session['password'])
 
 @app.route("/logout")

@@ -1,7 +1,15 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, session
 from flask_bootstrap import Bootstrap
+from pymongo import MongoClient
+
+from .DBUser import User
+import re
 import os
+
 app = Flask(__name__)
+
+client = MongoClient('localhost')#27017
+db = client.local
 
 # Secret key to use a session
 app.config['SECRET_KEY'] = 'F34TF$($e34D';
@@ -53,8 +61,12 @@ def register():
 # Allowed HTTP methods of an action can be specified using the methods keyword arg.
 @app.route('/login', methods=['POST'])
 def login():
-    session['email'] = request.form['email']
-    session['password'] = request.form['password']
+    try:
+        client.insertUser("1","1","1","1","1","1")
+        session['email'] = request.form['email']
+        session['password'] = request.form['password']
+        print 'user created'
+
     return redirect(url_for('message'))
 
 @app.route('/message')

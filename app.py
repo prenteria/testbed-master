@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, session
 from flask_bootstrap import Bootstrap
 from pymongo import MongoClient
+import DBUser
 
-from .DBUser import User
 import re
 import os
 
@@ -61,11 +61,9 @@ def register():
 # Allowed HTTP methods of an action can be specified using the methods keyword arg.
 @app.route('/login', methods=['POST'])
 def login():
-    try:
-        client.insertUser("1","1","1","1","1","1")
-        session['email'] = request.form['email']
-        session['password'] = request.form['password']
-        print 'user created'
+    DBUser.insertUser("1","1","1","1","1","1")
+    session['email'] = request.form['email']
+    session['password'] = request.form['password']
 
     return redirect(url_for('message'))
 

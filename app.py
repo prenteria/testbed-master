@@ -18,7 +18,7 @@ Bootstrap(app)
 
 @app.route("/")
 def index():
-	return render_template('login.html')
+	return render_template('register.html')
 
 @app.route('/home')
 def home():
@@ -61,7 +61,7 @@ def register():
 # Allowed HTTP methods of an action can be specified using the methods keyword arg.
 @app.route('/login', methods=['POST'])
 def login():
-    DBUser.insertUser("1","1","1","1","1","1")
+    DBUser.insertUser("1",request.form['email'],request.form['password'],"1","1","admin")
     session['email'] = request.form['email']
     session['password'] = request.form['password']
 
@@ -73,6 +73,8 @@ def message():
         return abort(403)
     return render_template('/unused/message.html', email=session['email'], 
                                            password=session['password'])
+# @app.route('/register', methods=['POST'])
+# def register():
 
 @app.route("/logout")
 def logout():

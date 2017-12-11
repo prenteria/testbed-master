@@ -5,32 +5,23 @@ import re
 client = MongoClient('localhost')#27017
 db = client.local
 
+class User():
 
-def authenticateUser(email, password):
+
+db.User.find( {"email": email}
+
+db.User.find({"email" : email, "password": password})
+
+
+def read():
     try:
-
-        users = db.User.find(
-            {
-            "email": email,
-            "password": password
-             })
-        count = 0
+        users = db.User.find()
+        print '\n ALL USERS \n'
         for user in users:
-            count = count +1
-        if count > 0:
-            return True
-        else:
-            return False
+            print user
 
     except Exception, e:
         print str(e)
-
-    print '\n User: ' , email
-
-
-
-
-
 
 def insertUser(self, name, email, password, orginization, skill_level, user_type):
     try:
@@ -94,7 +85,7 @@ def main():
     
     while(1):
     # choosing option to do CRUD operations
-        selection = raw_input('\nSelect 1 to insert, 2 to update, 3 to auth, 4 to delete\n')
+        selection = raw_input('\nSelect 1 to insert, 2 to update, 3 to read, 4 to delete\n')
 		  
     
         if selection == '1':
@@ -167,16 +158,7 @@ def main():
 
 
         elif selection == '3':
-
-            email = raw_input('Enter email :')
-
-            password = raw_input('Enter password :')
-
-            isauth =  authenticateUser(email, password)
-            if isauth:
-                 print 'welcome'
-            else:
-                  print 'WRONG'
+            read()
         elif selection == '4':
 		
             name = raw_input('Enter name to delete :')

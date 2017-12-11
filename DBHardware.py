@@ -130,9 +130,9 @@ def main():
         if selection == '1':
             name = raw_input('Enter VM name :')
         
-    	    if not name:
+            if not name:
                 raise Exception('name cannot be empty')
-		       
+               
 
             vrdp = raw_input('Enter vrdp :')
 
@@ -171,13 +171,13 @@ def main():
         elif selection == '3':
             read()
         elif selection == '4':
-		
+        
             name = raw_input('Enter name to delete :')
             deleteVM(name)
 
         else:
             print '\n INVALID SELECTION \n'
-			
+            
 if __name__ == '__main__':
-   main()			
+   main()           
 # Function to insert data into mongo db

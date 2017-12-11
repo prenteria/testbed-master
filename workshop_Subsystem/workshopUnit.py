@@ -1,10 +1,11 @@
 from Workshop import workshop
-#from Server import server
+from Server import Server
+from VirtualMachine import VirtualMachine
 import datetime
 #(workshop)
 class workshopUnit(workshop):
-    def __init__(self,name,description,status,host,skillLevel,publishedDate,sessionType,refMaterial,vm):
-        workshop.__init__(self,name,description,status,host,skillLevel,publishedDate,sessionType,refMaterial)
+    def __init__(self,name,description,host,skillLevel,publishedDate,sessionType,vm):
+        workshop.__init__(self,name,description,host,skillLevel,publishedDate,sessionType)
         self.vm=vm
         self.connectionString=''
         self.connectionStringType=''
@@ -17,11 +18,11 @@ class workshopUnit(workshop):
     def setConnectionStringType(self,type):
         self.connectionStringType=type
         #go to hardware 5
+    def getVirtualMachineList(self):
+        return self.vm
     def setConnectionString(self,string):
         self.connectionString=string
-    def getVitualMachineList(self):
-        return self.vm
-    def setVitualMachineList(self,list):
+    def setVirtualMachineList(self,list):
         self.vm=list
     def addVirtualMachineToUnit(self,vmToAdd):
         self.vm.append(vmToAdd)
@@ -33,11 +34,33 @@ class workshopUnit(workshop):
      #   return server.getSessionState()
 
     #def setSessionState(self):
+    def restoreUnit(self):
+        for v in self.vm:
+            if(v.getSnapshot()!=""):
+                v.hostName.restore_snapshot(v.getName())
 
     def cloneWorkshop(self,name,numClones,vrdpSeed,netAdptrSeed):
-        newVM=self.vm.clone(self.vm,vrdpSeed,netAdptrSeed,numClones)
-        newWorkshopUnit=workshopUnit(name,self.name,self.description,self.status,self.host,self.skillLevel,datetime.datetime.now(),self.sessionType,self.refMaterial,newVM)
-        return newWorkshopUnit
+        serv=Server("10.0.0.0","user","pass")
+        clonedUnits=[]
+        totalVmClones=[]
+        cloneList=[]
+        for v in self.vm:
+            #tempList=hardware.cloneVM(v.getName(),vrdpSeed,netAdptrSeed,1)
+            tempList = serv.cloneVM(v.getName(), vrdpSeed, netAdptrSeed, numClones)
+            totalVmClones.append(tempList)
+
+        index = 0
+        clonesUsed = 0
+        while (clonesUsed < numClones):
+            index=clonesUsed
+            while index+numClones < len(totalVmClones):
+                cloneList.append(totalVmClones[index])
+                cloneList.append(totalVmClones[index + numClones])
+                index += 1
+            newWorkshopUnit = workshopUnit(name, self.description, self.host, self.skillLevel, datetime.datetime.now(),self.sessionType, cloneList)
+            clonedUnits.append(newWorkshopUnit)
+            clonesUsed += 1
+        return clonedUnits
 
     def exportWorkshop(self, selectedWorkshopList):
         index=0

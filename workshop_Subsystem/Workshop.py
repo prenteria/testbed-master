@@ -1,15 +1,15 @@
 #from Server import server
 import datetime
 class workshop:
-    def __init__(self,name,description,status,host,skillLevel,publishedDate,sessionType,refMaterial):
+    def __init__(self,name,description,host,skillLevel,publishedDate,sessionType):
         self.name=name
         self.description=description
-        self.status=status
+        self.status=""
         self.host=host
         self.skillLevel=skillLevel
         self.publishedDate=publishedDate
         self.sessionType=sessionType
-        self.refMaterial=refMaterial
+        self.refMaterial=""
 
     def deleteWorkshop(self,workshop,workshopList):
         workshopList.remove(workshop)
@@ -25,8 +25,6 @@ class workshop:
         return newWorkshop
 
     #def exportWorkshop(self,selectedWorkshopList):
-
-
 
     def getName(self):
         return self.name
@@ -60,4 +58,3 @@ class workshop:
         self.host=hostToSet
     def setPublishedDate(self,pd):
         self.publishedDate=pd
-

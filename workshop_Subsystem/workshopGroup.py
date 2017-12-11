@@ -3,9 +3,9 @@ import datetime
 import workshopUnit
 class workshopGroup(workshop):
     unitCount=0
-    def __init__(self,name,description,status,host,skillLevel,publishedDate,sessionType,refMaterial,units):
+    def __init__(self,name,description,host,skillLevel,publishedDate,sessionType,units):
         self.units=[]
-        workshop.__init__(self,name,description,status,host,skillLevel,publishedDate,sessionType,refMaterial)
+        workshop.__init__(self,name,description,host,skillLevel,publishedDate,sessionType)
         self.units=units
 
     def countUnits(self):
@@ -22,13 +22,21 @@ class workshopGroup(workshop):
     def getUnitList(self):
         return self.units
     def cloneWorkshop(self,name,numClones,vrdpSeed,netAdptrSeed):
-        index=0
-        newUnits=[]
-        while index < len(self.units):
-            newUnits[index]=self.units[index].clone(name,numClones,vrdpSeed,netAdptrSeed)
-            index=index+1
-        newWorkshopGroup=workshopGroup(name,self.description,self.status,self.host,self.skillLevel,datetime.datetime.now(),self.sessionType,self.refMaterial,newUnits)
-        return newWorkshopGroup
+        tempList=[]
+        currCloneCount=1
+        while(currCloneCount<=numClones):
+            currCloneName=self.name+"("+str(currCloneCount)+")"
+            index=0
+            newUnits=[]
+            for unit  in self.units:
+                newUnits.append(unit.cloneWorkshop(name,1,vrdpSeed,netAdptrSeed))
+                index=index+1
+            newWorkshopGroup=workshopGroup(currCloneName,self.description,self.host,self.skillLevel,datetime.datetime.now(),self.sessionType,newUnits)
+            tempList.append(newWorkshopGroup)
+            currCloneCount=currCloneCount+1
+            #add to list of workshopgroups
+            #return newWorkshopGroup
+        return tempList
 
     def exportWorkshop(self, selectedWorkshopList):
         info=open(self.name+".txt","w+")

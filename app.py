@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, session
 from flask_bootstrap import Bootstrap
 from pymongo import MongoClient
-import DBUser
+from database import DBUser
 
 import re
 import os
@@ -17,8 +17,8 @@ app.config['SECRET_KEY'] = 'F34TF$($e34D';
 Bootstrap(app)
 
 @app.route("/")
-def index():
-	return render_template('register.html')
+def index():   
+	return render_template('uservalidation.html')
 
 @app.route('/home')
 def home():
@@ -49,11 +49,6 @@ def statistics():
 def userprofiles():
     return render_template('userprofiles.html')
 
-@app.route('/register')
-def register():
-    return render_template('register.html')
-
-
 # Sessions allows you to store information specific to a user from one request to the next
 # To use a session you need a secret key
 
@@ -64,8 +59,32 @@ def login():
     DBUser.insertUser("1",request.form['email'],request.form['password'],"1","1","admin")
     session['email'] = request.form['email']
     session['password'] = request.form['password']
-
     return redirect(url_for('message'))
+    # user = DBUser.authenticateUser(request.form['email'], request.form['password'])
+    # if user:
+    #     return redirect(url_for('index'))
+
+    # else:
+    #     return redirect(url_for('login.html'))
+
+
+
+@app.route('/register', methods=['POST', 'GET'])
+def register():
+    if request.method == 'POST':
+        users = mongo.db.users
+        existing_user = users.find_one({'email' : request.form['email']})
+
+        if existing_user is None:
+            hashpass = bcrypt.hashpw(request.form['pass'].encode('utf-8'), bcrypt.gensalt())
+            users.insert({'name' : request.form['username'], 'password' : hashpass})
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
+        
+        return 'That username already exists!'
+
+    return render_template('register.html')
+
 
 @app.route('/message')
 def message():

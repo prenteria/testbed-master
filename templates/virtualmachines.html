@@ -1,6 +1,7 @@
 <!-- This is jinja -->
 {% extends "/Navigation/navigation.html" %}
 {% include "style.html" %}
+{% include "/modals/virtualmachinemodals.html" %}
 
 <body>
 	<div id="wrapper">
@@ -14,24 +15,27 @@
 			</div>
 
 			<div class="row">
-				<div class="col-lg-1 col-md-1">
+				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="submit" value="+VM" class="btn btn-primary">
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addVirtualMachine">VM+
+							</button>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-1 col-md-1">
+				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="submit" value="Restore" class="btn btn-primary">
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#restoreVirtualMachine">Restore
+							</button>						
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-1 col-md-1">
+				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="submit" value="Clone" class="btn btn-primary">
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#cloneVirtualMachine">Clone
+							</button>						
 						</div>
 					</div>
 				</div>

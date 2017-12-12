@@ -6,17 +6,42 @@ client = MongoClient('localhost')#27017
 db = client.local
 
 
+<<<<<<< HEAD
 def read():
     try:
         users = db.User.find()
         print '\n ALL USERS \n'
         for user in users:
             print user
+=======
+def authenticateUser(email, password):
+    try:
+
+        users = db.User.find(
+            {
+            "email": email,
+            "password": password
+             })
+        count = 0
+        for user in users:
+            count = count +1
+        if count > 0:
+            return True
+        else:
+            return False
+>>>>>>> 76048cdb085460f6437faab48b173e1396586faf
 
     except Exception, e:
         print str(e)
 
+<<<<<<< HEAD
 def insertUser(name, email, password, orginization, skill_level, user_type):
+=======
+    print '\n User: ' , email
+
+
+def insertUser(self, name, email, password, orginization, skill_level, user_type):
+>>>>>>> 76048cdb085460f6437faab48b173e1396586faf
     try:
         
         print '\Inserting: \n'
@@ -26,7 +51,11 @@ def insertUser(name, email, password, orginization, skill_level, user_type):
             "email":email,
             "password":password,
             "orginization":orginization,
+<<<<<<< HEAD
 	    "skill_level":skill_level,
+=======
+        "skill_level":skill_level,
+>>>>>>> 76048cdb085460f6437faab48b173e1396586faf
             "user_type":user_type
             })
         if not checkName(name):
@@ -36,12 +65,20 @@ def insertUser(name, email, password, orginization, skill_level, user_type):
     except Exception, e:
         print str(e)
 
+<<<<<<< HEAD
 def checkName(name):
+=======
+def checkName(self,name):
+>>>>>>> 76048cdb085460f6437faab48b173e1396586faf
     if re.match("^[a-zA-Z0-9_.-]+$", name):
         raise Exception('Invalid letters/numbers')
 
 
+<<<<<<< HEAD
 def updateUser(name, email, password, orginization, skill_level, user_type, user_id):
+=======
+def updateUser(self,name, email, password, orginization, skill_level, user_type, user_id):
+>>>>>>> 76048cdb085460f6437faab48b173e1396586faf
     try:
 
         print '\Updating user: ' , user_id, name
@@ -60,6 +97,7 @@ def updateUser(name, email, password, orginization, skill_level, user_type, user
     except Exception, e:
         print str(e)
 
+<<<<<<< HEAD
 def deleteUser(name):
     try:
 	
@@ -162,3 +200,17 @@ def main():
 if __name__ == '__main__':
    main()			
 # Function to insert data into mongo db
+=======
+def deleteUser(self,name):
+    try:
+    
+        db.User.delete_many({"name":name})
+
+        if not name:
+            raise Exception('Name cannot be empty')
+        
+        print '\nDeletion successful\n'
+        
+    except Exception, e:
+        print str(e)
+>>>>>>> 76048cdb085460f6437faab48b173e1396586faf

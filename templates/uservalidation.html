@@ -1,0 +1,107 @@
+{% include "style.html" %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% block content %}
+<body>
+
+    <!-- Top content -->
+    <div class="top-content">
+
+        <div class="inner-bg">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <h1>TestBed Login &amp; Registration Forms</h1>
+                        <div class="description">
+                            <p>
+                                Please log in if you are a registered user, if you don't wish to register, please use the <strong>"Guest"</strong> option. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-5">
+                        <div class="form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Login to our site</h3>
+                                    <p>Enter username and password to log on:</p>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <form method= POST action="{{ url_for('login')}}">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Password" name="password" type="password" value="" required>
+                                        </div>
+                                        <!-- Change this to a button or input when using this as a form -->
+                                        <input type="submit" value="Log In" class="btn btn-info">
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+                        
+                        <div class="guest-access">
+                            <h3>If you do not wish to register...</h3>
+                            <input type="submit" value="Guest" class="btn btn-basic">
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-1 middle-border"></div>
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-5">
+
+                        <div class="form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Register here</h3>
+                                    <p>Fill in the form below to get instant access:</p>
+                                </div>
+                            </div>
+                            <div class="form-bottom">
+                                <form action="/login" method="POST">
+                                    <fieldset>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="First Name" name="firstname" type="text" autofocus required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Last Name" name="lastname" type="text" value="" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="Organization" name="organization" type="text" autofocus>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input class="form-control" id="password" placeholder="Password" name="password" type="password" autofocus required>
+                                        </div>
+                                        <div class="registrationFormAlert" id="divCheckPasswordMatch"> </div>
+                                        <!-- Change this to a button or input when using this as a form -->
+                                        <input type="submit" value="Register" class="btn btn-info">
+                                    </fieldset>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </body>
+    {% endblock %}
+
+    </html>
+
+

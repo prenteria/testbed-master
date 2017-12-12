@@ -1,0 +1,244 @@
+{% block content %}
+
+<!-- Modal window for adding a new workshop group -->
+<div class="modal fade" id="addWorkshopUnit" tabindex="-1" role="dialog" 
+aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <button type="button" class="close" 
+      data-dismiss="modal">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+      New Workshop Unit
+    </h4>
+  </div>
+
+  <!-- Modal Body -->
+
+  <div class="modal-body">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label  class="col-sm-2 control-label"
+        for="workshopUnitName">Workshop Unit</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" 
+          id="workshopUnitName" placeholder="Workshop Unit Name"/>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="virtualMachineList">Virtual Machine</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          id="virtualMachineList" placeholder="List of Virtual Machines"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="descriptionWorkshopUnit" >Description</label>
+        <div class="col-sm-10">
+          <textarea class="form-control" placeholder="Description" id="description-text"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="referenceMaterialTagWorkshopUnit">Refrence Material Tag</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          id="referenceMaterialTagWorkshopUnit" placeholder="Material Tag"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="referenceMaterialFileWorkshopUnit" >Reference Material File</label>
+        <div class="col-sm-10">
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+            <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="workshopUnitConnectionString">Connection Strings</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="workshopUnitConnectionString">
+            <option>String1</option>
+            <option>String2</option>
+            <option>String3</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="referenceMaterialFileWorkshopUnit" >Connection Strings File</label>
+        <div class="col-sm-10">
+          <div class="fileinput fileinput-new" data-provides="fileinput">
+            <span class="btn btn-default btn-file"><span>Choose file</span><input type="file" /></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="workshopGroupPersistenceType">Persistence Session</label>
+        <div class="col-sm-10">
+          <select class="form-control" id="workshopGroupPersistenceType">
+            <option>Persistent</option>
+            <option>Non-Persistent</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="workshopGroupPersistenceType">End Date</label>
+        <div class="col-sm-10">
+          <div class='input-group date' id='workshopGroupDatePicker'>
+            <input type='text' class="form-control" />
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"
+    data-dismiss="modal">
+    Cancel
+  </button>
+  <button type="button" class="btn btn-primary">
+    Add
+  </button>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Modal window for cloning workshop unit
+ -->
+<div class="modal fade" id="cloneWorkshopUnit" tabindex="-1" role="dialog" 
+aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <button type="button" class="close" 
+      data-dismiss="modal">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+      Clone
+    </h4>
+  </div>
+
+  <!-- Modal Body -->
+
+  <div class="modal-body">
+    <label  class="col-sm-12">Selected Workshop Unit [Name of the selected Workshop Unit]</label>
+
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label  class="col-sm-2 control-label"
+        for="numberOfClonesWorkshopGroup">No. Of Clones</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" 
+          id="numberOfClonesWorkshopGroup" placeholder="No. Of Clones"/>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="vrdpWorkshopUnit" >VRDP Seed</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          id="vrdpWorkshopUnit" placeholder="VRDP"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="networkAdapterNameWorkshopUnit" >Network Adapter Name</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control"
+          id="networkAdapterNameWorkshopUnit" placeholder="Network Adapter Name"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="networkAdapterSeedWorkshopUnit" >Network Adapter Seed</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control"
+          id="networkAdapterSeedWorkshopUnit" placeholder="Network Adapter Seed"/>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"
+    data-dismiss="modal">
+    Cancel
+  </button>
+  <button type="button" class="btn btn-primary">
+    Clone
+  </button>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Modal Window for warning upon deletion of workshop unit -->
+<div class="modal fade" id="deleteWorkshopUnit" tabindex="-1" role="dialog" 
+aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <button type="button" class="close" 
+      data-dismiss="modal">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+      Delete Workshop Unit
+    </h4>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="modal-body">
+    <p>Are you sure you want to delete the workshop unit(s) selected?</p>
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"
+    data-dismiss="modal">
+    Cancel
+  </button>
+  <button type="button" class="btn btn-danger">
+    Delete
+  </button>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

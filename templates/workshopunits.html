@@ -1,6 +1,7 @@
 <!-- This is jinja -->
 {% extends "/Navigation/navigation.html" %}
 {% include "style.html" %}
+{% include "/modals/workshopunitsmodals.html" %}
 
 <body>
 
@@ -14,53 +15,57 @@
 				<!-- /.col-lg-12 -->
 			</div>
 
-
 			<div class="row">
-				<div class="col-lg-1 col-md-1">
+				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="submit" value="+Unit" class="btn btn-primary">
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addWorkshopUnit">Unit+
+							</button>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-1 col-md-1">
+				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="submit" value="Import" class="btn btn-primary">
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#importWorkshopUnit">Import
+							</button>						
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-1 col-md-1">
+				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="submit" value="Export" class="btn btn-primary">
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exportWorkshopUnit">Export
+							</button>						
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-1 col-md-1">
+				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="submit" value="Delete" class="btn btn-primary">
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#deleteWorkshopUnit">Delete
+							</button>						
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-1 col-md-1">
+				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="submit" value="Restore" class="btn btn-primary">
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#restoreWorkshopUnit">Restore
+							</button>						
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-1 col-md-1">
+				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="submit" value="Clone" class="btn btn-primary">
+							<button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#cloneWorkshopUnit">Clone
+							</button>						
 						</div>
 					</div>
 				</div>
-				
-
 			</div>
+
 
 			<!-- This section contains the content of the page -->
 			<div class="row">

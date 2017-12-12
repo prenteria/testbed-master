@@ -1,0 +1,106 @@
+<!-- Modal -->
+
+{% block content %}
+
+<!-- Modal window for adding a server -->
+<div class="modal fade" id="addServer" tabindex="-1" role="dialog" 
+aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <button type="button" class="close" 
+      data-dismiss="modal">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+      New Server
+    </h4>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="modal-body">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label  class="col-sm-2 control-label"
+        for="serverIpAddress">Server IP Address</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" 
+          id="serverIpAddress" placeholder="Server IP Address"/>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="username" >User Name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          id="serverUsername" placeholder="User Name"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="username" >Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control"
+          id="serverPassword" placeholder="Password"/>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"
+    data-dismiss="modal">
+    Cancel
+  </button>
+  <button type="button" class="btn btn-primary">
+    Add
+  </button>
+</div>
+</div>
+</div>
+</div>
+
+
+<!-- Modal Window for deletion warning -->
+<div class="modal fade" id="deleteServer" tabindex="-1" role="dialog" 
+aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <button type="button" class="close" 
+      data-dismiss="modal">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+      Delete Server
+    </h4>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="modal-body">
+    <p>Are you sure you want to delete the server(s) selected?</p>
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"
+    data-dismiss="modal">
+    Cancel
+  </button>
+  <button type="button" class="btn btn-danger">
+    Delete
+  </button>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

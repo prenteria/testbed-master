@@ -3,6 +3,8 @@
 <html lang="en">
 <head>
   {% block head %}
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='../../static/favicomatic/staticfavicon-32x32.png') }}"  sizes="32x32" />
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='../../static/favicomatic/favicon-16x16.png') }}"  sizes="16x16" />
   <title>{% block title %}{% endblock %} Test Bed</title>
   {% endblock %}
   <meta charset="utf-8">

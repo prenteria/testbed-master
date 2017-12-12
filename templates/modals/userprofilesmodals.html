@@ -1,0 +1,76 @@
+{% block content %}
+
+<!-- Modal window for cloning a VM -->
+<div class="modal fade" id="cloneVirtualMachine" tabindex="-1" role="dialog" 
+aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <!-- Modal Header -->
+    <div class="modal-header">
+      <button type="button" class="close" 
+      data-dismiss="modal">
+      <span aria-hidden="true">&times;</span>
+      <span class="sr-only">Close</span>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">
+      Add
+    </h4>
+  </div>
+
+  <!-- Modal Body -->
+  <div class="modal-body">
+    <form class="form-horizontal" role="form">
+      <div class="form-group">
+        <label  class="col-sm-2 control-label"
+        for="numberOfClones">No. Of Clones</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" 
+          id="numberOfClones" placeholder="No. Of Clones"/>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="vrdp" >VRDP</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control"
+          id="vrdp" placeholder="VRDP"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="networkAdapterName" >Network Adapter Name</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control"
+          id="networkAdapterName" placeholder="Network Adapter Name"/>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-sm-2 control-label"
+        for="networkAdapterSeed" >Network Adapter Seed</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control"
+          id="networkAdapterSeed" placeholder="Network Adapter Seed"/>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  <!-- Modal Footer -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default"
+    data-dismiss="modal">
+    Cancel
+  </button>
+  <button type="button" class="btn btn-primary">
+    Add
+  </button>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

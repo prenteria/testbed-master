@@ -28,11 +28,19 @@ def authenticateUser(email, password):
     print '\n User: ' , email
 
 
+def read():
+    try:
+        users = db.User.find()
+        print '\n ALL USERS \n'
+        for user in users:
+            print user
+
+    except Exception, e:
+        print str(e)
 
 
 
-
-def insertUser(self, name, email, password, orginization, skill_level, user_type):
+def insertUser(name, email, password, orginization, skill_level, user_type):
     try:
         
         print '\Inserting: \n'
@@ -45,19 +53,14 @@ def insertUser(self, name, email, password, orginization, skill_level, user_type
 	    "skill_level":skill_level,
             "user_type":user_type
             })
-        if not checkName(name):
-            print 'INVALID'
-        #print '\nInserted data successfully\n'
+        
+        print '\nInserted data successfully\n'
     
     except Exception, e:
         print str(e)
 
-def checkName(self,name):
-    if re.match("^[a-zA-Z0-9_.-]+$", name):
-        raise Exception('Invalid letters/numbers')
 
-
-def updateUser(self,name, email, password, orginization, skill_level, user_type, user_id):
+def updateUser(name, email, password, orginization, skill_level, user_type, user_id):
     try:
 
         print '\Updating user: ' , user_id, name
@@ -76,7 +79,7 @@ def updateUser(self,name, email, password, orginization, skill_level, user_type,
     except Exception, e:
         print str(e)
 
-def deleteUser(self,name):
+def deleteUser(name):
         try:
         
             db.User.delete_many({"name":name})

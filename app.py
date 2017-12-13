@@ -51,7 +51,13 @@ def statistics():
 def userprofiles():
     return render_template('userprofiles.html')
 
+@app.route('/persistence')
+def persistence():
+    return render_template('persistenceworkshops.html')
 
+@app.route('/temporary')
+def temporary():
+    return render_template('temporaryworkshops.html')
 
 # Sessions allows you to store information specific to a user from one request to the next
 # To use a session you need a secret key
@@ -76,7 +82,6 @@ def message():
 def logout():
     session['logged_in'] = False
     return index()
-
 
     
 if __name__ == "__main__":

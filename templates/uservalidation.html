@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="panel-body">
-                                <form method= POST action="{{ url_for('login')}}">
+                                <form method="POST" action="{{ url_for('login')}}">
                                     <fieldset>
                                         <div class="form-group">
                                             <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus required>
@@ -53,7 +53,7 @@
                         
                         <div class="guest-access">
                             <h3>If you do not wish to register...</h3>
-                            <input type="submit" value="Guest" class="btn btn-basic">
+                            <a href="/temporary">Guest</a>
                         </div>
 
                     </div>

@@ -1,6 +1,7 @@
 from Workshop import workshop
 from workshopGroup import workshopGroup
 from workshopUnit import workshopUnit
+import re, subprocess
 from ReferenceMaterial import ReferenceMaterial
 class workshopManager:
     workshopGoupList=[]
@@ -66,9 +67,11 @@ class workshopManager:
         self.workshopUnitList = self.workshopUnitList + ws
         # update mongo
 
-    def deleteWorkhsop(self,ws,wsList):
-        wsList.remove(ws)
+    def deleteWorkhsopG(self,ws):
+        self.workshopGoupList.remove(ws)
         #update mongo
+    def deleteWorkshopU(self,ws):
+        self.workshopUnitList.remove(ws)
 
     def getWorkshopGroupList(self):
         return self.workshopGoupList
@@ -91,6 +94,9 @@ class workshopManager:
             if wu.name== name:
                 clonedWU=wu.cloneWorkshop(name,numCopys,vrdp,netAdapter)
         self.addWorkshopU(clonedWU)
+
+    def groupVM(self,name,group):
+        subprocess.check_output(["C:\Program Files\Oracle\VirtualBox\VBoxManage.exe", "modifyvm", name, "--groups", "/"+group])
 
     def getWorkshopGroup(self,name):
         wgList=self.getWorkshopGroupList()

@@ -14,13 +14,18 @@ class workshopGroup(workshop):
             unitCount=unitCount+1
         return unitCount
     def addUnit(self,workshopUnit):
-        self.unit.append(workshopUnit)
+        self.units.append(workshopUnit)
     def setUnits(self,wu):
         self.units=wu
     def deleteWorkshop(self,workshopUnitName):
-        self.unit.remove(workshopUnitName)
+        self.units.remove(workshopUnitName)
     def getUnitList(self):
         return self.units
+
+    def restoreGroup(self):
+        for unit in self.units:
+            unit.restoreUnit()
+
     def cloneWorkshop(self,name,numClones,vrdpSeed,netAdptrSeed):
         tempList=[]
         currCloneCount=1
@@ -47,7 +52,6 @@ class workshopGroup(workshop):
         info.write(self.skillLevel+"\n")
         info.write(self.publishedDate+"\n")
         info.write(self.sessionType+"\n")
-        info.write (self.units+"\n")
         info.close()
         workshopUnit.exportWorkhop(self.units)
         #while index < len(self.units):

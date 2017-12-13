@@ -36,7 +36,7 @@ class workshopUnit(workshop):
     #def setSessionState(self):
     def restoreUnit(self):
         for v in self.vm:
-            if(v.getSnapshot()!=""):
+            if(v.getCurrentSnapshot()!=""):
                 v.hostName.restore_snapshot(v.getName())
 
     def cloneWorkshop(self,name,numClones,vrdpSeed,netAdptrSeed):
@@ -47,30 +47,20 @@ class workshopUnit(workshop):
         for v in self.vm:
             #tempList=hardware.cloneVM(v.getName(),vrdpSeed,netAdptrSeed,1)
             tempList = serv.cloneVM(v.getName(), vrdpSeed, netAdptrSeed, numClones)
-            for a in tempList:
-                print "teset"
-                print a.name
             totalVmClones=totalVmClones+tempList
-        for  virt in totalVmClones:
-            print "loop"
-            print virt.name
 
         index = 0
         clonesUsed = 0
         while (clonesUsed < numClones):
             index=clonesUsed
             while index+numClones < len(totalVmClones):
-                print "loop"
                 cloneList.append(totalVmClones[index])
                 cloneList.append(totalVmClones[index + numClones])
                 index += 1
-            for c in cloneList:
-                print c.name
-            newWorkshopUnit = workshopUnit(name, self.description, self.host, self.skillLevel, datetime.datetime.now(),self.sessionType, totalVmClones)
+            newName=name+"("+str(clonesUsed+1)+")"
+            newWorkshopUnit = workshopUnit(newName, self.description, self.host, self.skillLevel, datetime.datetime.now(),self.sessionType, totalVmClones)
             clonedUnits.append(newWorkshopUnit)
             clonesUsed += 1
-        for u in clonedUnits:
-            print u.name
         return clonedUnits
 
     def exportWorkshop(self, selectedWorkshopList):

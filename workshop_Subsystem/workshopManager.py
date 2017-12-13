@@ -44,7 +44,7 @@ class workshopManager:
             if wrkshpG.name == name:
                 return "Workshop group name is not unique"
         newWg= workshopGroup(name,description,host,skillLevel,publishedDate,sessionType,units)
-        self.addWorkshop(newWg,wgList)
+        self.workshopGoupList.append(newWg)
         return newWg #delete
         #update database
     def createUnit(self,name,description,host,skillLevel,publishedDate,sessionType,vm):
@@ -53,13 +53,18 @@ class workshopManager:
             if wrkshpU.name == name:
                 return "Workshop unit name is not unique"
         newWu=workshopUnit(name,description,host,skillLevel,publishedDate,sessionType,vm)
-        self.addWorkshop(newWu,wuList)
+        self.workshopUnitList.append(newWu)
         return newWu #delete
         #update mongo
         #create unit add to list update db
-    def addWorkshop(self,ws,wsList):
-        wsList.append(ws)
+    def addWorkshopG(self,ws):
+        #wgL=self.getWorkshopGroupList()
+        self.workshopGoupList=self.workshopGoupList+ws
         #update mongo
+    def addWorkshopU(self, ws):
+        #wgL = self.getWorkshopGroupList()
+        self.workshopUnitList = self.workshopUnitList + ws
+        # update mongo
 
     def deleteWorkhsop(self,ws,wsList):
         wsList.remove(ws)
@@ -70,21 +75,22 @@ class workshopManager:
     def getWorkshopUnitList(self):
         return self.workshopUnitList
 
-    def cloneWG(self,name,vrdp,netAdapter,numCopys):
+    def cloneWG(self,name,numCopys,vrdp,netAdapter):
         clonedWG=[]
         wgList=self.getWorkshopGroupList()
         for wg in wgList:
+            #print wg.name
             if wg.name== name:
                 clonedWG=wg.cloneWorkshop(name,numCopys,vrdp,netAdapter)
-        self.addWorkshop(clonedWG,wgList)
+        self.addWorkshopG(clonedWG)
 
-    def cloneWU(self,name,vrdp,netAdapter,numCopys):
+    def cloneWU(self,name,numCopys,vrdp,netAdapter):
         clonedWU=[]
         wuList=self.getWorkshopUnitList()
         for wu in wuList:
             if wu.name== name:
                 clonedWU=wu.cloneWorkshop(name,numCopys,vrdp,netAdapter)
-        self.addWorkshop(clonedWU,wuList)
+        self.addWorkshopU(clonedWU)
 
     def getWorkshopGroup(self,name):
         wgList=self.getWorkshopGroupList()

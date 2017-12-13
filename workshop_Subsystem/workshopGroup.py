@@ -29,7 +29,7 @@ class workshopGroup(workshop):
             index=0
             newUnits=[]
             for unit  in self.units:
-                newUnits.append(unit.cloneWorkshop(name,1,vrdpSeed,netAdptrSeed))
+                newUnits=newUnits + unit.cloneWorkshop(unit.name,1,vrdpSeed,netAdptrSeed)
                 index=index+1
             newWorkshopGroup=workshopGroup(currCloneName,self.description,self.host,self.skillLevel,datetime.datetime.now(),self.sessionType,newUnits)
             tempList.append(newWorkshopGroup)

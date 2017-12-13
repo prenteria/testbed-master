@@ -128,9 +128,9 @@ def main():
         if selection == '1':
             name = raw_input('Enter workshop name :')
         
-            if not name:
+    	    if not name:
                 raise Exception('Name cannot be empty')
-               
+		       
 
             description = raw_input('Enter description :')
 
@@ -211,12 +211,12 @@ def main():
         elif selection == '3':
             read()
         elif selection == '4':
-        
+		
             name = raw_input('Enter name to delete :')
             deleteWorkshopUnit(name)
         else:
             print '\n INVALID SELECTION \n'
-            
+			
 if __name__ == '__main__':
-   main()           
+   main()			
 # Function to insert data into mongo db

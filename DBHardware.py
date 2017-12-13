@@ -58,7 +58,7 @@ def updateServer(ip, username, password):
     except Exception, e:
         print str(e)
 
-def addVM(name, vrdp, adapter, ip):
+def addVM(name, vrdp, adapter, ip, snapshot):
     try:
 
         print '\Adding VM'
@@ -68,6 +68,7 @@ def addVM(name, vrdp, adapter, ip):
             "vrdp": vrdp,
             "adapter": adapter,
             "ip" : ip,
+            "snapshot" : snapshot,
 
             "Server" : [
                          { 
@@ -95,7 +96,7 @@ def deleteVM(name):
         print str(e)
 
 
-def updateVM(name, vrdp, adapter, ip):
+def updateVM(name, vrdp, adapter, ip, snapshot):
     try:
 
         print '\Updating VM: ' , name
@@ -107,6 +108,7 @@ def updateVM(name, vrdp, adapter, ip):
             "vrdp": vrdp,
             "adapter": adapter,
             "ip" : ip,
+            "snapshot" : snapshot,
 
             "Server" : [
                          { 
@@ -130,9 +132,9 @@ def main():
         if selection == '1':
             name = raw_input('Enter VM name :')
         
-            if not name:
+    	    if not name:
                 raise Exception('name cannot be empty')
-               
+		       
 
             vrdp = raw_input('Enter vrdp :')
 
@@ -147,9 +149,11 @@ def main():
 
 
             ip = raw_input('Enter server ip :')
+
+            snapshot = raw_input('Enter snapshot date :')
                       
 
-            addVM(name, vrdp, adapter, ip)
+            addVM(name, vrdp, adapter, ip, snapshot)
             
         elif selection == '2':
 
@@ -163,21 +167,23 @@ def main():
 
             ip = raw_input('Enter ip :')
 
+            snapshot = raw_input('Enter snapshot date :')
+
         
-            updateVM(name, vrdp, adapter, ip)
+            updateVM(name, vrdp, adapter, ip, snapshot)
 
 
 
         elif selection == '3':
             read()
         elif selection == '4':
-        
+		
             name = raw_input('Enter name to delete :')
             deleteVM(name)
 
         else:
             print '\n INVALID SELECTION \n'
-            
+			
 if __name__ == '__main__':
-   main()           
+   main()			
 # Function to insert data into mongo db

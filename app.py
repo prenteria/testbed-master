@@ -1,16 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, abort, session
 from flask_bootstrap import Bootstrap
 from pymongo import MongoClient
-import DBUser
-
+from database import DBUser
 import re
 import os
+
+#app = Flask(__name__, static_url_path="/static", static_folder='/testbed-master/static')
 
 app = Flask(__name__)
 
 client = MongoClient('localhost')#27017
-
-
+db = client.local
 
 # Secret key to use a session
 app.config['SECRET_KEY'] = 'F34TF$($e34D';
@@ -18,23 +18,24 @@ app.config['SECRET_KEY'] = 'F34TF$($e34D';
 Bootstrap(app)
 
 @app.route("/")
+
 def index():
-	return render_template('login.html')
+	return render_template('uservalidation.html')
 
-@app.route('/home')
+@app.route("/home")
 def home():
-	return render_template('home.html')
+	return render_template('index.html')
 
 
-@app.route('/servers')
+@app.route("/servers")
 def server():
     return render_template('server.html')
 
-@app.route('/vms')
+@app.route("/vms")
 def virtualmachine():
     return render_template('virtualmachines.html')
 
-@app.route('/workshopunits')
+@app.route("/workshopunits")
 def workshopunits():
     return render_template('workshopunits.html')
 
@@ -54,7 +55,6 @@ def userprofiles():
 def register():
     return render_template('register.html')
 
-
 # Sessions allows you to store information specific to a user from one request to the next
 # To use a session you need a secret key
 
@@ -65,15 +65,15 @@ def login():
 
     user = DBUser.authenticateUser(request.form['email'], request.form['password'])
     if user:
-        return render_template('home.html')
+        return render_template('index.html')
 
     else:
-        return redirect(url_for('login.html'))
+        return render_template('uservalidation.html')
 
-    #DBUser.insertUser("1",request.form['email'],request.form['password'],"1","1","admin")
     #session['email'] = request.form['email']
     #session['password'] = request.form['password']
     #return redirect(url_for('message'))
+
 
 @app.route('/message')
 def message():
@@ -81,8 +81,6 @@ def message():
         return abort(403)
     return render_template('/unused/message.html', email=session['email'], 
                                            password=session['password'])
-# @app.route('/register', methods=['POST'])
-# def register():
 
 @app.route("/logout")
 def logout():

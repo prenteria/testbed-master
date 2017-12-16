@@ -33,11 +33,11 @@
 						</div>
 					</div>
 				</div>
-
+<!-- 
 				<div class="col-lg-1 col-sm-1">
 					<div class="panel-heading">
 						<div class="row">
-							<input type="button" value="Add Row" onclick="myFunction()"/>
+							<input type="button" value="Add Row" onclick="checkAll()"/>
 						</div>
 					</div>
 				</div>
@@ -47,7 +47,7 @@
 							<input type="button" value="Delete Row" onclick="myFunction()" />
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 
 			<!-- Table content -->
@@ -59,34 +59,34 @@
 							<table width="100%" class="table table-striped table-bordered table-hover" id="servers-table">
 								<thead>
 									<tr>
-										<th><input type="checkbox" ionchange="checkAll(this)" name="chk[]"/>
+										<th><input type="checkbox" name="showhide" onchange="checkAll(this)"></th>
 											<th>Server IP Address</th>
 											<th>Status</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr class="ip1">
-											<td><input type="checkbox" name="sub_chk" class="sub_chk" data-id="1"></td>
+											<td><input type="checkbox" name="check" class="sub_chk" id="check_1"></td>
 											<td>129.129.129.1</td>
 											<td><i>Running</i></td>
 										</tr>
 										<tr class="ip2">
-											<td><input type="checkbox" name="sub_chk" class="sub_chk" data-id="2"></td>
+											<td><input type="checkbox" name="check" class="sub_chk" id="check_1"></td>
 											<td>129.129.129.2</td>
 											<td><i>Offline</i></td>
 										</tr>
 										<tr class="ip2">
-											<td><input type="checkbox" name="sub_chk" class="sub_chk" data-id="3"></td>
+											<td><input type="checkbox" name="check" class="sub_chk" id="check_1"></td>
 											<td>129.129.129.3</td>
 											<td><i>Running</i></td>
 										</tr>
 										<tr class="ip3">
-											<td><input type="checkbox" name="sub_chk" class="sub_chk" data-id="4"></td>
+											<td><input type="checkbox" name="check" class="sub_chk" id="check_1"></td>
 											<td>129.129.129.4</td>
 											<td><i>Running</i></td>
 										</tr>
 										<tr class="ip4">
-											<td><input type="checkbox" name="sub_chk" class="sub_chk" data-id="5"></td>
+											<td><input type="checkbox" name="check" class="sub_chk" id="check_1"></td>
 											<td>129.129.129.5</td>
 											<td><i>Offline</i></td>
 										</tr>

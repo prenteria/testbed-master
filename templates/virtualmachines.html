@@ -41,7 +41,7 @@
 				</div>
 			</div>
 
-<div class="row">
+			<div class="row">
 				<div class="col-lg-12">
 					<div class="panel panel-default">
 						<!-- /.panel-heading -->
@@ -49,44 +49,44 @@
 							<table width="100%" class="table table-striped table-bordered table-hover" id="servers-table">
 								<thead>
 									<tr>
-										<th><input type="checkbox" ionchange="checkAll(this)" name="chk[]"/>
-											<th>Virtual Machine Name</th>
-											<th>VRDP</th>
-											<th>Network Adapters</th>
-											<th>Most Recent Snapshot</th>
-											<th>Host</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr class="ip1">
-											<td><input type="checkbox" name="sub_chk" class="sub_chk" data-id="1"></td>
-											<td>kali-2016.2-debian_ecel</td>
-											<td><i>1234</i></td>
-											<td>hijacking-intnet01</td>
-											<td><i>Snapshot A</i></td>
-											<td>129.129.129.1</td>
-										</tr>
-										<tr class="ip2">
-											<td><input type="checkbox" name="sub_chk" class="sub_chk" data-id="2"></td>
-											<td>kali-2016.3-debian_ecel</td>
-											<td><i>1235</i></td>
-											<td>hijacking-intnet02</td>
-											<td><i>Snapshot B</i></td>
-											<td>129.129.129.2</td>
-										</tr>
-									</tbody>
-								</table>            
-							</div>
-							<!-- /.panel-body -->
+										<th><input type="checkbox" name="showhide" onchange="checkAll(this)"></th>
+										<th>Virtual Machine Name</th>
+										<th>VRDP</th>
+										<th>Network Adapters</th>
+										<th>Most Recent Snapshot</th>
+										<th>Host</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="ip1">
+										<td><input type="checkbox" name="sub_chk" class="sub_chk" data-id="1"></td>
+										<td>kali-2016.2-debian_ecel</td>
+										<td><i>1234</i></td>
+										<td>hijacking-intnet01</td>
+										<td><i>Snapshot A</i></td>
+										<td>129.129.129.1</td>
+									</tr>
+									<tr class="ip2">
+										<td><input type="checkbox" name="sub_chk" class="sub_chk" data-id="2"></td>
+										<td>kali-2016.3-debian_ecel</td>
+										<td><i>1235</i></td>
+										<td>hijacking-intnet02</td>
+										<td><i>Snapshot B</i></td>
+										<td>129.129.129.2</td>
+									</tr>
+								</tbody>
+							</table>            
 						</div>
-						<!-- /.panel -->
+						<!-- /.panel-body -->
 					</div>
+					<!-- /.panel -->
 				</div>
 			</div>
 		</div>
-		{% endblock %}
-		<!-- /#page-wrapper -->
 	</div>
+	{% endblock %}
+	<!-- /#page-wrapper -->
+</div>
 
 </body>
 </html>

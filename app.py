@@ -5,9 +5,9 @@ from flask_bootstrap import Bootstrap
 import re
 import os
 
-app = Flask(__name__, static_url_path="/static", static_folder='/testbed-master/static')
+# app = Flask(__name__, static_url_path="/static", static_folder='/testbed-master/static')
 
-# app = Flask(__name__)
+app = Flask(__name__)
 
 # client = MongoClient('localhost')#27017
 # db = client.local
@@ -18,7 +18,6 @@ app.config['SECRET_KEY'] = 'F34TF$($e34D';
 Bootstrap(app)
 
 @app.route("/")
-
 def index():
 	return render_template('uservalidation.html')
 
@@ -68,8 +67,17 @@ def temporary():
 def login():
     session['email'] = request.form['email']
     session['password'] = request.form['password']
-    return redirect(url_for('message'))
+    return redirect(url_for('home'))
 
+@app.route('/register', methods=['POST'])
+def register():
+    session['firstname'] = request.form['firstname']
+    session['lastname'] = request.form['lastname']
+    session['organization'] = request.form['organization']
+    session['lastname'] = request.form['lastname']
+    session['email'] = request.form['email']
+    session['password'] = request.form['password']
+    return redirect(url_for('persistence'))
 
 @app.route('/message')
 def message():

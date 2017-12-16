@@ -53,6 +53,9 @@ def userprofiles():
 
 @app.route('/register')
 def register():
+
+    
+
     return render_template('register.html')
 
 # Sessions allows you to store information specific to a user from one request to the next
@@ -62,6 +65,10 @@ def register():
 # Allowed HTTP methods of an action can be specified using the methods keyword arg.
 @app.route('/login', methods=['POST'])
 def login():
+
+    #newuser = DBUser.insertUser('1','1', '1', '1', '1', '1', '1')
+    #if newuser:
+        #return render_template('index.html')
 
     user = DBUser.authenticateUser(request.form['email'], request.form['password'])
     if user:
